@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPLens - Blood Pressure Monitoring App</title>
+    <title>BP Lens - Blood Pressure Monitoring App</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -47,46 +47,135 @@
         .cta-button:hover {
             background: #1976D2;
         }
+        .download-options {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .download-card {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .version-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .store-badge {
+            height: 40px;
+            margin: 0.5rem;
+        }
+        .huawei-badge {
+            height: 40px;
+            margin: 0.5rem;
+        }
+        .store-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        .apk-button {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0.5rem;
+        }
+        .apk-button:hover {
+            background: #1976D2;
+        }
+        .qr-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .qr-code {
+            max-width: 200px;
+            margin: 1rem auto;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>BPLens</h1>
+        <h1>BP Lens</h1>
         <p>Your Personal Blood Pressure Monitoring Companion</p>
-        <a href="#" class="cta-button">Download Now</a>
+        <div class="store-buttons">
+            <a href="https://play.google.com/store/apps/details?id=io.github.bplens.app">
+                <img alt="Get it on Google Play" class="store-badge" src="GetItOnGooglePlay_Badge_Web_color_English.png"/>
+            </a>
+            <a href="https://appgallery.huawei.com/app/C113940867">
+                <img alt="Get it on AppGallery" class="huawei-badge" src="app-gallery-badge.png"/>
+            </a>
+            <a href="/apk/bplens-1.0-8.apk" class="apk-button">Download APK</a>
+        </div>
     </div>
 
     <div class="container">
-        <h2>Why Choose BPLens?</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>Camera Recognition</h3>
-                <p>Simply point your camera at your blood pressure monitor's display - no manual typing needed!</p>
-            </div>
-            <div class="feature-card">
-                <h3>Easy Export</h3>
-                <p>Export your records in CSV and JSON formats to share with healthcare providers.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Privacy First</h3>
-                <p>Your health data stays on your device. No account needed.</p>
-            </div>
-        </div>
-
-        <h2>Key Features</h2>
+        <h2>Features</h2>
         <ul>
-            <li>✓ Instant blood pressure readings using camera OCR</li>
-            <li>✓ Export data in CSV and JSON formats</li>
-            <li>✓ Dark mode for comfortable nighttime use</li>
-            <li>✓ No registration required</li>
-            <li><span style="color: #666">⟳ Detailed analytics (Coming Soon)</span></li>
-            <li><span style="color: #666">⟳ Customizable reminders (Coming Soon)</span></li>
-            <li><span style="color: #666">⟳ Health insights and trends (Coming Soon)</span></li>
+            <li>⟳ Easy blood pressure tracking</li>
+            <li>⟳ Export data to share with your doctor</li>
+            <li>⟳ Customizable reminders (Coming Soon)</li>
+            <li>⟳ Health insights and trends (Coming Soon)</li>
         </ul>
 
+        <h2>Download Options</h2>
+        <div class="download-options">
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3>Google Play Store</h3>
+                    <p>Recommended way to install BP Lens with automatic updates.</p>
+                    <a href="https://play.google.com/store/apps/details?id=io.github.bplens.app">
+                        <img alt="Get it on Google Play" class="store-badge" src="GetItOnGooglePlay_Badge_Web_color_English.png"/>
+                    </a>
+                </div>
+                <div class="download-card">
+                    <h3>Huawei AppGallery</h3>
+                    <p>Get BP Lens from Huawei's official app store.</p>
+                    <a href="https://appgallery.huawei.com/app/C113940867">
+                        <img alt="Get it on AppGallery" class="huawei-badge" src="app-gallery-badge.png"/>
+                    </a>
+                    <div class="qr-section">
+                        <p>Scan QR Code to Download</p>
+                        <img class="qr-code" src="app-gallery-qr.png" alt="AppGallery QR Code"/>
+                        <p><a href="https://url.cloud.huawei.com/vcUevMqCvm?shareTo=qrcode">Or click here to open in browser</a></p>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <h3>Direct APK Download</h3>
+                    <p>Manual installation for advanced users.</p>
+                    <a href="/apk/bplens-1.0-8.apk" class="apk-button">Download APK</a>
+                    <div class="version-info">Version 1.0 (Build 8)</div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">Note: To install the APK directly, you'll need to enable "Install from Unknown Sources" in your Android settings.</p>
+        </div>
+
         <h2>Get Started Today</h2>
-        <p>Download BPLens and simplify your blood pressure monitoring. Available on Google Play Store.</p>
-        <a href="https://play.google.com/store/apps/details?id=io.github.bplens.app" class="cta-button">Download on Google Play</a>
+        <p>Download BP Lens and simplify your blood pressure monitoring. Available on Google Play Store, Huawei AppGallery, and direct APK download.</p>
+        <div class="store-buttons">
+            <a href="https://play.google.com/store/apps/details?id=io.github.bplens.app">
+                <img alt="Get it on Google Play" class="store-badge" src="GetItOnGooglePlay_Badge_Web_color_English.png"/>
+            </a>
+            <a href="https://appgallery.huawei.com/app/C113940867">
+                <img alt="Get it on AppGallery" class="huawei-badge" src="app-gallery-badge.png"/>
+            </a>
+            <a href="/apk/bplens-1.0-8.apk" class="apk-button">Download APK</a>
+        </div>
     </div>
 </body>
 </html>
