@@ -1,92 +1,544 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPLens - Blood Pressure Monitoring App</title>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="title">BP Lens - Blood Pressure Monitoring App</title>
+    <!-- Add Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      // Translations object
+      const translations = {
+        en: {
+          title: "BP Lens - BP Meter Reader",
+          subtitle: "Your Personal Blood Pressure Monitoring Companion",
+          featuresTitle: "Features",
+          downloadTitle: "Download Options",
+          getStartedTitle: "Get Started Today",
+          languageName: "English",
+        },
+        ja: {
+          title: "BP Lens - 血圧計リーダー",
+          subtitle:
+            "カメラで血圧計の読み取りを簡単に - スマートな健康管理をサポート",
+          featuresTitle: "主な機能",
+          downloadTitle: "ダウンロード方法",
+          getStartedTitle: "今すぐ始めよう",
+          languageName: "日本語",
+        },
+        "zh-Hans": {
+          title: "BP Lens - 血压计读数助手",
+          subtitle: "智能血压计读数识别工具 - 用安卓设备快速记录数据",
+          featuresTitle: "主要功能",
+          downloadTitle: "下载选项",
+          getStartedTitle: "立即开始",
+          languageName: "简体中文",
+        },
+        "zh-Hant": {
+          title: "BP Lens - 血壓計讀數助手",
+          subtitle: "智能血壓計讀數識別工具 - 用安卓裝置快速記錄數據",
+          featuresTitle: "主要功能",
+          downloadTitle: "下載選項",
+          getStartedTitle: "立即開始",
+          languageName: "繁體中文",
+        },
+      };
+      // Add features translations
+      translations["en"].featuresList = `
+                <li><i class="fas fa-camera"></i> Smart Capture: Just point your device at your blood pressure meter</li>
+                <li><i class="fas fa-file-export"></i> Smart Import/Export: Save your measurements in CSV format</li>
+                <li><i class="fas fa-history"></i> Detailed History: View and customize your measurement columns</li>
+                <li><i class="fas fa-moon"></i> Dark Mode: Comfortable viewing day and night</li>
+                <li><i class="fas fa-lock"></i> Privacy First: Measurements are stored only on your device</li>
+                <li><i class="fas fa-plug"></i> Zero Setup: No account needed to get started</li>
+            `;
+      translations["ja"].featuresList = `
+                <li><i class="fas fa-camera"></i> スマート読み取り：カメラを向けるだけで数値を認識</li>
+                <li><i class="fas fa-file-export"></i> データ管理：CSV形式で手軽にバックアップ</li>
+                <li><i class="fas fa-history"></i> 履歴機能：血圧データを見やすく整理</li>
+                <li><i class="fas fa-moon"></i> ダークモード：目に優しい画面表示</li>
+                <li><i class="fas fa-lock"></i> 安心設計：測定値は端末内でのみ管理</li>
+                <li><i class="fas fa-plug"></i> 簡単操作：面倒な設定不要ですぐに使える</li>
+            `;
+      translations["zh-Hans"].featuresList = `
+                <li><i class="fas fa-camera"></i> 智能识别：对准血压计即可快速读取数值</li>
+                <li><i class="fas fa-file-export"></i> 数据导出：支持 CSV 格式，方便整理归档</li>
+                <li><i class="fas fa-history"></i> 历史记录：血压数据一目了然，随时查看趋势</li>
+                <li><i class="fas fa-moon"></i> 护眼模式：夜间使用也不累</li>
+                <li><i class="fas fa-lock"></i> 数据安全：测量值严格保密，仅在本机存储</li>
+                <li><i class="fas fa-plug"></i> 即刻使用：无需注册，随装随用</li>
+            `;
+      translations["zh-Hant"].featuresList = `
+                <li><i class="fas fa-camera"></i> 智能識別：對準血壓計即可快速讀取數值</li>
+                <li><i class="fas fa-file-export"></i> 資料匯出：支援 CSV 格式，方便整理備份</li>
+                <li><i class="fas fa-history"></i> 歷史紀錄：血壓數據一目瞭然，隨時查看趨勢</li>
+                <li><i class="fas fa-moon"></i> 護眼模式：夜間使用也不疲勞</li>
+                <li><i class="fas fa-lock"></i> 資料安全：測量值嚴格保密，僅保存在本機</li>
+                <li><i class="fas fa-plug"></i> 立即使用：免註冊，隨裝即用</li>
+            `;
+
+      // Add get started text translations
+      translations["en"].getStartedText =
+        "Download BP Lens today and make blood pressure tracking effortless!";
+      translations["ja"].getStartedText =
+        "BP Lensをダウンロードして、スマートな血圧管理を始めましょう！";
+      translations["zh-Hans"].getStartedText =
+        "立即下载 BP Lens，让血压记录变得轻松简单！";
+      translations["zh-Hant"].getStartedText =
+        "立即下載 BP Lens，讓血壓記錄變得輕鬆簡單！";
+
+      // Add download section translations
+      translations["en"].googlePlayTitle = "Google Play Store";
+      translations["en"].googlePlayDesc =
+        "Recommended way to install BP Lens with automatic updates.";
+      translations["en"].huaweiTitle = "Huawei AppGallery";
+      translations["en"].huaweiDesc =
+        "Get BP Lens from Huawei's official app store.";
+
+      translations["ja"].googlePlayTitle = "Google Play ストア";
+      translations["ja"].googlePlayDesc =
+        "BP Lensを自動更新付きでインストールする推奨方法";
+      translations["ja"].huaweiTitle = "Huawei AppGallery";
+      translations["ja"].huaweiDesc = "Huawei公式アプリストアからBP Lensを入手";
+
+      translations["zh-Hans"].googlePlayTitle = "Google Play 商店";
+      translations["zh-Hans"].googlePlayDesc =
+        "推荐通过Google Play商店安装BP Lens，可自动更新";
+      translations["zh-Hans"].huaweiTitle = "华为应用市场";
+      translations["zh-Hans"].huaweiDesc = "从华为官方应用市场获取BP Lens";
+
+      translations["zh-Hant"].googlePlayTitle = "Google Play 商店";
+      translations["zh-Hant"].googlePlayDesc =
+        "推薦透過Google Play商店安裝BP Lens，可自動更新";
+      translations["zh-Hant"].huaweiTitle = "華為應用市場";
+      translations["zh-Hant"].huaweiDesc = "從華為官方應用市場獲取BP Lens";
+
+      // Add APK download translations
+      translations["en"].apkTitle = "Direct APK Download";
+      translations["en"].apkDesc = "Manual installation for advanced users.";
+      translations["en"].apkNote =
+        'Note: To install the APK directly, you\'ll need to enable "Install from Unknown Sources" in your Android settings.';
+
+      translations["ja"].apkTitle = "直接APKダウンロード";
+      translations["ja"].apkDesc = "上級ユーザー向けの手動インストール";
+      translations["ja"].apkNote =
+        "注: APKを直接インストールするには、Android設定で「提供元不明のアプリ」を有効にする必要があります";
+
+      translations["zh-Hans"].apkTitle = "直接下载APK";
+      translations["zh-Hans"].apkDesc = "适合高级用户的手动安装方式";
+      translations["zh-Hans"].apkNote =
+        '注意：要直接安装APK，您需要在Android设置中启用"安装未知来源应用"';
+
+      translations["zh-Hant"].apkTitle = "直接下載APK";
+      translations["zh-Hant"].apkDesc = "適合進階使用者的手動安裝方式";
+      translations["zh-Hant"].apkNote =
+        '注意：要直接安裝APK，您需要在Android設定中啟用"安裝未知來源應用"';
+
+      // Add QR code translations
+      translations["en"].qrText = "Scan QR Code to Download";
+      translations["en"].browserLink = "Or click here to open in browser";
+
+      translations["ja"].qrText = "QRコードをスキャンしてダウンロード";
+      translations["ja"].browserLink =
+        "またはこちらをクリックしてブラウザで開く";
+
+      translations["zh-Hans"].qrText = "扫描二维码下载";
+      translations["zh-Hans"].browserLink = "或点击此处用浏览器打开";
+
+      translations["zh-Hant"].qrText = "掃描QR碼下載";
+      translations["zh-Hant"].browserLink = "或點擊此處用瀏覽器打開";
+
+      // Language system functions
+      function initLanguageSystem() {
+        const supportedLangs = {
+          en: ["en", "en-US", "en-GB"],
+          ja: ["ja", "ja-JP"],
+          "zh-Hans": ["zh", "zh-CN", "zh-Hans", "zh-SG"],
+          "zh-Hant": ["zh-TW", "zh-HK", "zh-Hant", "zh-MO"],
+        };
+
+        let currentLang = localStorage.getItem('selectedLanguage') || "en";
+
+        function updateTexts() {
+          const elements = document.querySelectorAll("[data-i18n]");
+          elements.forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            el[key === "featuresList" ? "innerHTML" : "textContent"] =
+              translations[currentLang][key] || translations["en"][key];
+          });
+          document.getElementById("current-lang").textContent =
+            translations[currentLang].languageName;
+        }
+
+        window.switchLanguage = function (lang) {
+          currentLang = lang;
+          localStorage.setItem('selectedLanguage', lang);
+          document.documentElement.lang = lang;
+          document.documentElement.setAttribute("data-lang", lang);
+          updateTexts();
+        };
+
+        // Only detect browser language if no stored preference
+        if (!localStorage.getItem('selectedLanguage')) {
+          const browserLang = navigator.language;
+          for (const [lang, aliases] of Object.entries(supportedLangs)) {
+            if (aliases.includes(browserLang)) {
+              currentLang = lang;
+              break;
+            }
+          }
+        }
+
+        // Initialize
+        document.documentElement.lang = currentLang;
+        document.documentElement.setAttribute("data-lang", currentLang);
+        updateTexts();
+      }
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", initLanguageSystem);
+    </script>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .header {
-            background-color: #2196F3;
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .feature-card {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #2196F3;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-        .cta-button:hover {
-            background: #1976D2;
-        }
+      /* Language switcher styles */
+      .language-switcher {
+        margin: 1rem 0;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropbtn {
+        background-color: #1976d2;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s;
+      }
+
+      .dropbtn:hover {
+        background-color: #1565c0;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .header {
+        background-color: #2196f3;
+        color: white;
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .feature-card {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .cta-button {
+        display: inline-block;
+        background: #2196f3;
+        color: white;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+      }
+      .cta-button:hover {
+        background: #1976d2;
+      }
+      .download-options {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .download-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .download-card {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .version-info {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.5rem;
+      }
+      .store-badge {
+        height: 40px;
+        margin: 0.5rem;
+      }
+      .huawei-badge {
+        height: 40px;
+        margin: 0.5rem;
+      }
+      .store-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 1rem 0;
+      }
+      .apk-button {
+        display: inline-block;
+        background: #2196f3;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 0.5rem;
+      }
+      .apk-button:hover {
+        background: #1976d2;
+      }
+      .apk-badge {
+        height: 40px;
+        margin: 0.5rem;
+      }
+      .qr-section {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: #f5f5f5;
+        border-radius: 8px;
+      }
+      .qr-code {
+        max-width: 200px;
+        margin: 1rem auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <h1>BPLens</h1>
-        <p>Your Personal Blood Pressure Monitoring Companion</p>
-        <a href="#" class="cta-button">Download Now</a>
+      <h1 data-i18n="title">BP Lens</h1>
+      <p data-i18n="subtitle">
+        Your Personal Blood Pressure Monitoring Companion
+      </p>
+      <div class="language-switcher">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <i class="fas fa-globe"></i>
+            <span id="current-lang">English</span>
+            <i class="fas fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" onclick="switchLanguage('en')">
+              <i class="fas fa-language"></i> English
+            </a>
+            <a href="#" onclick="switchLanguage('ja')">
+              <i class="fas fa-language"></i> 日本語
+            </a>
+            <a href="#" onclick="switchLanguage('zh-Hans')">
+              <i class="fas fa-language"></i> 简体中文
+            </a>
+            <a href="#" onclick="switchLanguage('zh-Hant')">
+              <i class="fas fa-language"></i> 繁體中文
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="store-buttons">
+        <a
+          href="https://play.google.com/store/apps/details?id=io.github.bplens.app"
+        >
+          <img
+            alt="Get it on Google Play"
+            class="store-badge"
+            src="GetItOnGooglePlay_Badge_Web_color_English.png"
+          />
+        </a>
+        <a href="https://appgallery.huawei.com/app/C113940867">
+          <img
+            alt="Get it on AppGallery"
+            class="huawei-badge"
+            src="app-gallery-badge.png"
+          />
+        </a>
+        <a href="/apk/bplens-1.0-8.apk">
+          <svg class="apk-badge" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="60" rx="5" fill="#000000"/>
+            <text x="100" y="38" font-family="Arial" font-size="18" fill="white" text-anchor="middle" font-weight="500">
+              Download APK
+            </text>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <div class="container">
-        <h2>Why Choose BPLens?</h2>
-        <div class="features">
-            <div class="feature-card">
-                <h3>Camera Recognition</h3>
-                <p>Simply point your camera at your blood pressure monitor's display - no manual typing needed!</p>
+      <h2 data-i18n="featuresTitle">Features</h2>
+      <ul data-i18n="featuresList">
+        <li>
+          ⟳ Smart Capture: Just point your device at your blood pressure meter
+        </li>
+        <li>
+          ⟳ Smart Import/Export: Save your measurements in CSV format
+        </li>
+        <li>⟳ Detailed History: View and customize your measurement columns</li>
+        <li>⟳ Dark Mode: Comfortable viewing day and night</li>
+        <li>⟳ Privacy First: Measurements are stored only on your device</li>
+        <li>⟳ Zero Setup: No account needed to get started</li>
+      </ul>
+
+      <h2 data-i18n="downloadTitle">Download Options</h2>
+      <div class="download-options">
+        <div class="download-grid">
+          <div class="download-card">
+            <h3 data-i18n="googlePlayTitle">Google Play Store</h3>
+            <p data-i18n="googlePlayDesc">
+              Recommended way to install BP Lens with automatic updates.
+            </p>
+            <a
+              href="https://play.google.com/store/apps/details?id=io.github.bplens.app"
+            >
+              <img
+                alt="Get it on Google Play"
+                class="store-badge"
+                src="GetItOnGooglePlay_Badge_Web_color_English.png"
+              />
+            </a>
+          </div>
+          <div class="download-card">
+            <h3 data-i18n="huaweiTitle">Huawei AppGallery</h3>
+            <p data-i18n="huaweiDesc">
+              Get BP Lens from Huawei's official app store.
+            </p>
+            <a href="https://appgallery.huawei.com/app/C113940867">
+              <img
+                alt="Get it on AppGallery"
+                class="huawei-badge"
+                src="app-gallery-badge.png"
+              />
+            </a>
+            <div class="qr-section">
+              <p data-i18n="qrText">Scan QR Code to Download</p>
+              <img
+                class="qr-code"
+                src="app-gallery-qr.png"
+                alt="AppGallery QR Code"
+              />
+              <p>
+                <a
+                  href="https://url.cloud.huawei.com/vcUevMqCvm?shareTo=qrcode"
+                  data-i18n="browserLink"
+                  >Or click here to open in browser</a
+                >
+              </p>
             </div>
-            <div class="feature-card">
-                <h3>Easy Export</h3>
-                <p>Export your records in CSV and JSON formats to share with healthcare providers.</p>
+          </div>
+          <div class="download-card">
+            <h3 data-i18n="apkTitle">Direct APK Download</h3>
+            <p data-i18n="apkDesc">Manual installation for advanced users.</p>
+            <a href="/apk/bplens-1.0-8.apk">
+              <svg class="apk-badge" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="60" rx="5" fill="#000000"/>
+                <text x="100" y="38" font-family="Arial" font-size="18" fill="white" text-anchor="middle" font-weight="500">
+                  Download APK
+                </text>
+              </svg>
+            </a>
+            <div class="version-info">
+              Version 1.0 (Build 8)
             </div>
-            <div class="feature-card">
-                <h3>Privacy First</h3>
-                <p>Your health data stays on your device. No account needed.</p>
-            </div>
+          </div>
         </div>
+        <p
+          style="margin-top: 2rem; font-size: 0.9rem; color: #666"
+          data-i18n="apkNote"
+        >
+          Note: To install the APK directly, you'll need to enable "Install from
+          Unknown Sources" in your Android settings.
+        </p>
+      </div>
 
-        <h2>Key Features</h2>
-        <ul>
-            <li>✓ Instant blood pressure readings using camera OCR</li>
-            <li>✓ Export data in CSV and JSON formats</li>
-            <li>✓ Dark mode for comfortable nighttime use</li>
-            <li>✓ No registration required</li>
-            <li><span style="color: #666">⟳ Detailed analytics (Coming Soon)</span></li>
-            <li><span style="color: #666">⟳ Customizable reminders (Coming Soon)</span></li>
-            <li><span style="color: #666">⟳ Health insights and trends (Coming Soon)</span></li>
-        </ul>
-
-        <h2>Get Started Today</h2>
-        <p>Download BPLens and simplify your blood pressure monitoring. Available on Google Play Store.</p>
-        <a href="https://play.google.com/store/apps/details?id=io.github.bplens.app" class="cta-button">Download on Google Play</a>
+      <h2 data-i18n="getStartedTitle">Get Started Today</h2>
+      <p data-i18n="getStartedText">
+        Download BP Lens today and make blood pressure tracking effortless!
+      </p>
+      <div class="store-buttons">
+        <a
+          href="https://play.google.com/store/apps/details?id=io.github.bplens.app"
+        >
+          <img
+            alt="Get it on Google Play"
+            class="store-badge"
+            src="GetItOnGooglePlay_Badge_Web_color_English.png"
+          />
+        </a>
+        <a href="https://appgallery.huawei.com/app/C113940867">
+          <img
+            alt="Get it on AppGallery"
+            class="huawei-badge"
+            src="app-gallery-badge.png"
+          />
+        </a>
+        <a href="/apk/bplens-1.0-8.apk">
+          <svg class="apk-badge" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="60" rx="5" fill="#000000"/>
+            <text x="100" y="38" font-family="Arial" font-size="18" fill="white" text-anchor="middle" font-weight="500">
+              Download APK
+            </text>
+          </svg>
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 </html>
