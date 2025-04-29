@@ -1,10 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BP Lens Privacy Policy</title>
+    <title data-i18n="privacyTitle">BP Lens Privacy Policy</title>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script>
+      // Translations object
+      const translations = {
+        en: {
+          privacyTitle: "BP Lens Privacy Policy",
+          lastUpdated: "Last Updated: April 20, 2025",
+          introductionTitle: "1. Introduction",
+          informationTitle: "2. Information We Collect",
+          cameraDataTitle: "2.1 Camera Data",
+          ocrDataTitle: "2.2 OCR Data",
+          storageAccessTitle: "2.3 Storage Access",
+          advertisingTitle: "3. Advertising",
+          dataStorageTitle: "4. Data Storage and Retention",
+          dataExportTitle: "5. Data Export",
+          thirdPartyTitle: "6. Third-Party Services",
+          childrenPrivacyTitle: "7. Children's Privacy",
+          changesTitle: "8. Changes to Privacy Policy",
+          contactTitle: "9. Contact Us",
+          languageName: "English",
+          introductionText: "BP Lens (\"we,\" \"our,\" or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our productivity application for digitizing numerical readings.",
+          cameraDataText: "We use your device's camera to capture numerical readings from physical displays. The camera is only used when you actively choose to digitize a reading. The captured images are processed for text recognition using artificial intelligence services. For quality improvement purposes, we may store anonymized images on our servers for up to 1 month before deletion. These stored images are not tied to any individual user.",
+          ocrDataText: "We utilize large language model (LLM) technology for OCR (Optical Character Recognition) processing, which may include both third-party services and self-hosted solutions. The images are processed for text recognition. For quality improvement, we may store anonymized images for up to 1 month before deletion. These stored images are not tied to any individual user.",
+          storageAccessText: "We access your device storage only when you choose to import or export your records.",
+          advertisingText: "We use AdMob to display advertisements. AdMob may collect and process data as described in their privacy policy:",
+          dataStorageText: "Your digitized readings are stored locally on your device. For quality improvement purposes, we may store anonymized images on our servers for up to 1 month before deletion:",
+          dataStorageList: "All personal data is stored only on your device;Images may be stored temporarily for service improvement;Stored images are anonymized and deleted within 1 month;You have complete control over your personal data",
+          dataExportText: "You can export your data in CSV format. You are responsible for the security of exported data files.",
+          thirdPartyText: "Our app uses the following third-party services:",
+          thirdPartyList: "Google AdMob for advertising; LLM services for OCR processing",
+          childrenPrivacyText: "Our app is not intended for children under 13. We do not knowingly collect personal information from children under 13.",
+          changesText: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
+          contactText: "If you have questions about this Privacy Policy, please contact us at:"
+        },
+        ja: {
+          privacyTitle: "BP Lens プライバシーポリシー",
+          lastUpdated: "最終更新日: 2025年4月20日",
+          introductionTitle: "1. はじめに",
+          informationTitle: "2. 収集する情報",
+          cameraDataTitle: "2.1 カメラデータ",
+          ocrDataTitle: "2.2 OCRデータ",
+          storageAccessTitle: "2.3 ストレージアクセス",
+          advertisingTitle: "3. 広告",
+          dataStorageTitle: "4. データの保存と保持",
+          dataExportTitle: "5. データのエクスポート",
+          thirdPartyTitle: "6. 第三者サービス",
+          childrenPrivacyTitle: "7. 児童のプライバシー",
+          changesTitle: "8. プライバシーポリシーの変更",
+          contactTitle: "9. お問い合わせ",
+          languageName: "日本語",
+          introductionText: "BP Lens（「当社」）は、ユーザーのプライバシー保護を重視しています。本プライバシーポリシーでは、数値読み取りデジタル化アプリの利用時に収集・使用・保護する情報について説明します。",
+          cameraDataText: "物理ディスプレイの数値読み取りにデバイスのカメラを使用します。カメラはユーザーが明示的に読み取りを選択した場合のみ作動します。撮影画像はAIサービスによる文字認識処理の後、品質改善のため最大1ヶ月間匿名化してサーバーに保存される場合があります。保存画像は個人を特定する情報とは紐付けられません。",
+          ocrDataText: "OCR（光学文字認識）処理には大規模言語モデル（LLM）技術を利用しており、サードパーティサービスや自社ホスティングソリューションを含む場合があります。品質改善のため、処理画像は最大1ヶ月間匿名化して保存される場合があります。保存画像は個人を特定する情報とは紐付けられません。",
+          storageAccessText: "記録のインポート/エクスポート時のみ、デバイスストレージにアクセスします。",
+          advertisingText: "広告表示にAdMobを利用しています。AdMobのデータ取り扱いについてはGoogleのプライバシーポリシーをご覧ください:",
+          dataStorageText: "デジタル化された記録はデバイス内にローカル保存されます。品質改善のため、匿名化画像を最大1ヶ月間サーバーに保存する場合があります:",
+          dataStorageList: "個人データは全てデバイス内に保存;品質改善のため一時的に画像を保存;保存画像は匿名化され1ヶ月以内に削除;個人データの完全な管理権限を保持",
+          dataExportText: "CSV形式でデータをエクスポート可能です。エクスポートファイルの安全管理はユーザーの責任となります。",
+          thirdPartyText: "当アプリが利用する第三者サービス:",
+          thirdPartyList: "広告配信: Google AdMob；OCR処理: LLMサービス",
+          childrenPrivacyText: "13歳未満の児童を対象としたアプリではありません。意図的に児童から個人情報を収集することはありません。",
+          changesText: "プライバシーポリシーは随時更新される場合があります。変更時は本ページで新しいポリシーを公開します。",
+          contactText: "本ポリシーに関するお問い合わせは以下まで:"
+        },
+        "zh-Hans": {
+          privacyTitle: "BP Lens 隐私政策",
+          lastUpdated: "最后更新: 2025年4月20日",
+          introductionTitle: "1. 简介",
+          informationTitle: "2. 我们收集的信息",
+          cameraDataTitle: "2.1 相机数据",
+          ocrDataTitle: "2.2 OCR数据",
+          storageAccessTitle: "2.3 存储访问",
+          advertisingTitle: "3. 广告",
+          dataStorageTitle: "4. 数据存储与保留",
+          dataExportTitle: "5. 数据导出",
+          thirdPartyTitle: "6. 第三方服务",
+          childrenPrivacyTitle: "7. 儿童隐私",
+          changesTitle: "8. 隐私政策变更",
+          contactTitle: "9. 联系我们",
+          languageName: "简体中文",
+          introductionText: "BP Lens（“我们”）致力于保护您的隐私。本政策说明我们在您使用数值读取数字化应用时如何收集、使用和保护您的信息。",
+          cameraDataText: "我们使用设备摄像头读取物理显示屏上的数值。仅在您主动选择数字化读数时使用摄像头。拍摄图像经AI服务进行文字识别处理后，可能为质量改进匿名保存至多1个月。存储图像不会关联任何个人身份信息。",
+          ocrDataText: "我们使用大语言模型（LLM）技术进行OCR（光学字符识别）处理，可能包含第三方服务或自主托管方案。图像经文字识别后，可能为质量改进匿名保存至多1个月。存储图像不会关联任何个人身份信息。",
+          storageAccessText: "仅在您选择导入/导出记录时访问设备存储。",
+          advertisingText: "我们使用AdMob展示广告。AdMob的数据处理方式请参阅Google隐私政策:",
+          dataStorageText: "数字化读数本地存储于设备中。为改进质量，可能匿名保存图像至服务器至多1个月:",
+          dataStorageList: "所有个人数据仅存储于设备;可能临时保存图像以改进服务;存储图像匿名化并于1个月内删除;您完全掌控个人数据",
+          dataExportText: "可导出CSV格式数据，导出文件的安全管理由您负责。",
+          thirdPartyText: "我们使用的第三方服务:",
+          thirdPartyList: "广告服务: Google AdMob；OCR处理: LLM服务",
+          childrenPrivacyText: "本应用不面向13岁以下儿童。我们不会故意收集13岁以下儿童的个人信息。",
+          changesText: "我们可能不时更新本政策。更新时将在本页面发布新版政策。",
+          contactText: "如有政策相关问题，请联系:"
+        },
+        "zh-Hant": {
+          privacyTitle: "BP Lens 隱私政策",
+          lastUpdated: "最後更新: 2025年4月20日",
+          introductionTitle: "1. 簡介",
+          informationTitle: "2. 我們收集的資訊",
+          cameraDataTitle: "2.1 相機資料",
+          ocrDataTitle: "2.2 OCR資料",
+          storageAccessTitle: "2.3 儲存存取",
+          advertisingTitle: "3. 廣告",
+          dataStorageTitle: "4. 資料儲存與保留",
+          dataExportTitle: "5. 資料匯出",
+          thirdPartyTitle: "6. 第三方服務",
+          childrenPrivacyTitle: "7. 兒童隱私",
+          changesTitle: "8. 隱私政策變更",
+          contactTitle: "9. 聯絡我們",
+          languageName: "繁體中文",
+          introductionText: "BP Lens（「我們」）致力保護您的隱私。本政策說明當您使用數值讀取數位化應用時，我們如何收集、使用及保護您的資訊。",
+          cameraDataText: "我們使用裝置相機讀取實體螢幕數值。僅在您主動選擇數位化讀數時使用相機。拍攝影像經AI服務進行文字辨識處理後，可能為品質改進匿名保存至多1個月。儲存影像不會關聯任何個人身份資訊。",
+          ocrDataText: "我們使用大語言模型（LLM）技術進行OCR（光學字元辨識）處理，可能包含第三方服務或自主託管方案。影像經文字辨識後，可能為品質改進匿名保存至多1個月。儲存影像不會關聯任何個人身份資訊。",
+          storageAccessText: "僅在您選擇匯入/匯出記錄時存取裝置儲存。",
+          advertisingText: "我們使用AdMob展示廣告。AdMob的資料處理方式請參閱Google隱私政策:",
+          dataStorageText: "數位化讀數本地儲存於裝置中。為改進品質，可能匿名保存影像至伺服器至多1個月:",
+          dataStorageList: "所有個人資料僅儲存於裝置;可能暫存影像以改進服務;儲存影像匿名化並於1個月內刪除;您完全掌控個人資料",
+          dataExportText: "可匯出CSV格式資料，匯出檔案的安全管理由您負責。",
+          thirdPartyText: "我們使用的第三方服務:",
+          thirdPartyList: "廣告服務: Google AdMob；OCR處理: LLM服務",
+          childrenPrivacyText: "本應用不面向13歲以下兒童。我們不會故意收集13歲以下兒童的個人資訊。",
+          changesText: "我們可能不時更新本政策。更新時將在本頁面發布新版政策。",
+          contactText: "如有政策相關問題，請聯絡:"
+        }
+      };
+
+      // Language system functions
+      function initLanguageSystem() {
+        const supportedLangs = {
+          en: ["en", "en-US", "en-GB"],
+          ja: ["ja", "ja-JP"],
+          "zh-Hans": ["zh", "zh-CN", "zh-Hans", "zh-SG"],
+          "zh-Hant": ["zh-TW", "zh-HK", "zh-Hant", "zh-MO"]
+        };
+
+        let currentLang = localStorage.getItem('selectedLanguage') || "en";
+
+        function updateTexts() {
+          const elements = document.querySelectorAll("[data-i18n]");
+          elements.forEach((el) => {
+            const key = el.getAttribute("data-i18n");
+            el.textContent = translations[currentLang][key] || translations["en"][key];
+          });
+          document.getElementById("current-lang").textContent = 
+            translations[currentLang].languageName;
+        }
+
+        window.switchLanguage = function (lang) {
+          currentLang = lang;
+          localStorage.setItem('selectedLanguage', lang);
+          document.documentElement.lang = lang;
+          document.documentElement.setAttribute("data-lang", lang);
+          updateTexts();
+        };
+
+        if (!localStorage.getItem('selectedLanguage')) {
+          const browserLang = navigator.language;
+          for (const [lang, aliases] of Object.entries(supportedLangs)) {
+            if (aliases.includes(browserLang)) {
+              currentLang = lang;
+              break;
+            }
+          }
+        }
+
+        document.documentElement.lang = currentLang;
+        document.documentElement.setAttribute("data-lang", currentLang);
+        updateTexts();
+      }
+
+      window.addEventListener("DOMContentLoaded", initLanguageSystem);
+    </script>
+
     <style>
+      /* Language switcher styles */
+      .language-switcher {
+        margin: 1rem 0;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropbtn {
+        background-color: #1976d2;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s;
+      }
+
+      .dropbtn:hover {
+        background-color: #1565c0;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
       body {
         font-family: Arial, sans-serif;
         line-height: 1.6;
@@ -23,20 +252,44 @@
     </style>
   </head>
   <body>
-    <h1>BP Lens Privacy Policy</h1>
-    <p class="last-updated">Last Updated: April 20, 2025</p>
+    <h1 data-i18n="privacyTitle">BP Lens Privacy Policy</h1>
+    <p class="last-updated" data-i18n="lastUpdated">Last Updated: April 20, 2025</p>
+    
+    <div class="language-switcher">
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fas fa-globe"></i>
+          <span id="current-lang">English</span>
+          <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#" onclick="switchLanguage('en')">
+            <i class="fas fa-language"></i> English
+          </a>
+          <a href="#" onclick="switchLanguage('ja')">
+            <i class="fas fa-language"></i> 日本語
+          </a>
+          <a href="#" onclick="switchLanguage('zh-Hans')">
+            <i class="fas fa-language"></i> 简体中文
+          </a>
+          <a href="#" onclick="switchLanguage('zh-Hant')">
+            <i class="fas fa-language"></i> 繁體中文
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <h2>1. Introduction</h2>
-    <p>
+    <h2 data-i18n="introductionTitle">1. Introduction</h2>
+    <p data-i18n="introductionText">
       BP Lens ("we," "our," or "us") is committed to protecting your privacy.
       This Privacy Policy explains how we collect, use, and safeguard your
       information when you use our productivity application for digitizing
       numerical readings.
     </p>
 
-    <h2>2. Information We Collect</h2>
-    <h3>2.1 Camera Data</h3>
-    <p>
+    <h2 data-i18n="informationTitle">2. Information We Collect</h2>
+    <h3 data-i18n="cameraDataTitle">2.1 Camera Data</h3>
+    <p data-i18n="cameraDataText">
       We use your device's camera to capture numerical readings from physical
       displays. The camera is only used when you actively choose to digitize a
       reading. The captured images are processed for text recognition using
@@ -45,8 +298,8 @@
       These stored images are not tied to any individual user.
     </p>
 
-    <h3>2.2 OCR Data</h3>
-    <p>
+    <h3 data-i18n="ocrDataTitle">2.2 OCR Data</h3>
+    <p data-i18n="ocrDataText">
       We use artificial intelligence services for OCR (Optical Character
       Recognition) processing. Currently, this is provided by OpenAI's GPT
       service. The images are processed for text recognition. For quality
@@ -54,59 +307,59 @@
       deletion. These stored images are not tied to any individual user.
     </p>
 
-    <h3>2.3 Storage Access</h3>
-    <p>
+    <h3 data-i18n="storageAccessTitle">2.3 Storage Access</h3>
+    <p data-i18n="storageAccessText">
       We access your device storage only when you choose to import or export
       your records.
     </p>
 
-    <h2>3. Advertising</h2>
-    <p>
+    <h2 data-i18n="advertisingTitle">3. Advertising</h2>
+    <p data-i18n="advertisingText">
       We use AdMob to display advertisements. AdMob may collect and process data
       as described in their privacy policy:
       <a href="https://policies.google.com/privacy">Google Privacy Policy</a>
     </p>
 
-    <h2>4. Data Storage and Retention</h2>
-    <p>
+    <h2 data-i18n="dataStorageTitle">4. Data Storage and Retention</h2>
+    <p data-i18n="dataStorageText">
       Your digitized readings are stored locally on your device. For quality
       improvement purposes, we may store anonymized images on our servers for up
       to 1 month before deletion:
     </p>
-    <ul>
+    <ul data-i18n="dataStorageList">
       <li>All personal data is stored only on your device</li>
       <li>Images may be stored temporarily for service improvement</li>
       <li>Stored images are anonymized and deleted within 1 month</li>
       <li>You have complete control over your personal data</li>
     </ul>
 
-    <h2>5. Data Export</h2>
-    <p>
+    <h2 data-i18n="dataExportTitle">5. Data Export</h2>
+    <p data-i18n="dataExportText">
       You can export your data in CSV format. You are responsible for the
       security of exported data files.
     </p>
 
-    <h2>6. Third-Party Services</h2>
-    <p>Our app uses the following third-party services:</p>
-    <ul>
+    <h2 data-i18n="thirdPartyTitle">6. Third-Party Services</h2>
+    <p data-i18n="thirdPartyText">Our app uses the following third-party services:</p>
+    <ul data-i18n="thirdPartyList">
       <li>Google AdMob for advertising</li>
       <li>OpenAI GPT for OCR processing</li>
     </ul>
 
-    <h2>7. Children's Privacy</h2>
-    <p>
+    <h2 data-i18n="childrenPrivacyTitle">7. Children's Privacy</h2>
+    <p data-i18n="childrenPrivacyText">
       Our app is not intended for children under 13. We do not knowingly collect
       personal information from children under 13.
     </p>
 
-    <h2>8. Changes to Privacy Policy</h2>
-    <p>
+    <h2 data-i18n="changesTitle">8. Changes to Privacy Policy</h2>
+    <p data-i18n="changesText">
       We may update this Privacy Policy from time to time. We will notify you of
       any changes by posting the new Privacy Policy on this page.
     </p>
 
-    <h2>9. Contact Us</h2>
-    <p>
+    <h2 data-i18n="contactTitle">9. Contact Us</h2>
+    <p data-i18n="contactText">
       If you have questions about this Privacy Policy, please contact us at:
     </p>
     <p>bplens70@gmail.com</p>
